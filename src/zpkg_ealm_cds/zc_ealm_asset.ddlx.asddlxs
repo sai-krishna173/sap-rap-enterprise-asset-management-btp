@@ -1,0 +1,65 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo:{ typeName: 'Asset',
+                 typeNamePlural: 'Assets',
+                 title:{label: 'ASSET ID', value: 'AssetName'},
+                 description:{ value: 'AssetType' } }
+annotate view ZC_EALM_ASSET
+    with 
+    
+{
+    @UI:{ facet: [{ id: 'ASSET',
+                    purpose: #STANDARD,
+                    type: #IDENTIFICATION_REFERENCE,
+                    label: 'Asset Details',
+                    position : 1 },
+                    { id: 'Maintenance',
+                    purpose: #STANDARD,
+                    type: #LINEITEM_REFERENCE,
+                    position: 2,
+                    targetElement: '_Maintenance' }] }
+
+    @UI: { lineItem: [{ position: 1 , label: 'Asset ID' }],
+           identification: [{ position: 1, label: 'Asset ID' }],
+           selectionField: [{position: 1}] }
+    AssetUuid;
+    @UI: { lineItem: [{ position: 2 , label: 'Asset Name' }],
+           identification: [{ position: 2, label: 'Asset Name' }],
+           selectionField: [{position: 2}],
+           fieldGroup: [{ qualifier: 'General', position: 1 }] }
+    AssetName;
+    @UI: { lineItem: [{ position: 2 , label: 'Asset Type' }],
+           identification: [{ position: 3, label: 'Asset Type' }],
+           selectionField: [{position: 3}] }
+    AssetType;
+    @UI: { lineItem: [{ position: 4 , label: 'Plant ID' }],
+           identification: [{ position: 4, label: 'Plant ID' }],
+           selectionField: [{position: 4}] }
+    PlantId;
+    @UI: { lineItem: [{ position: 5 , label: 'Cost Center' }],
+           identification: [{ position: 5, label: 'Cost Center' }],
+           selectionField: [{position: 5 }],
+           fieldGroup: [{ qualifier: 'General', position: 2 }] }
+    CostCenter;
+    @UI: { lineItem: [{ position: 6 , label: 'Purchase Date' }],
+           identification: [{ position: 6, label: 'Purchase Date' }],
+           selectionField: [{position: 6}] }
+    PurchaseDate;
+    @UI: { lineItem: [{ position: 7 , label: 'Status' }],
+           identification: [{ position: 7, label: 'Status' }],
+           selectionField: [{position: 7}] }
+    Status;
+    @UI:{ lineItem: [{ position: 8, criticality: 'StatusCriticality'}]}
+    StatusCriticality ;
+    @UI.hidden: true
+    CreatedBy;
+    @UI.hidden: true
+    CreatedAt;
+    @UI.hidden: true
+    LastChangedBy;
+    @UI.hidden: true
+    LastChangedAt;
+    @UI.hidden: true
+    LocalLastChangedAt;
+    
+} 

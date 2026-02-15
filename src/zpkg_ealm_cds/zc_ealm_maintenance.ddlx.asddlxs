@@ -1,0 +1,59 @@
+@Metadata.layer: #CORE
+
+@UI:{ headerInfo:{ typeName: 'Maintenance Request',
+                   typeNamePlural: 'Maintenance Requests',
+                   title:{ type: #STANDARD,
+                           value: 'Description' },
+                           description:{ value: 'DueDat' }}
+                            }
+annotate view ZC_EALM_MAINTENANCE with
+{
+
+@UI:{ facet: [{ id: 'Maintenance',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Maintenance Details',
+                position: 1 }]}
+  @UI: { lineItem: [{ position: 1, label: 'Request ID' }],
+         identification: [{ position: 1, label: 'Request ID' }] }
+  RequestUuid;
+  @UI: { lineItem: [{ position: 2, label: 'Asset ID' }],
+      identification: [{ position: 2, label: 'Asset ID' }] }
+  AssetUuid;
+  @UI: { lineItem: [{ position: 3, label: 'Description' }],
+      identification: [{ position: 3, label: 'Description' }] }
+  Description;
+  @UI: { lineItem: [{ position: 4, label: 'Requested by' }],
+      identification: [{ position: 4, label: 'Requested by' }] }
+  RequestedBy;
+  @UI: { lineItem: [{ position: 5, label: 'Requested Date' }],
+      identification: [{ position: 5, label: 'Requested Date' }] }
+  RequestedDate;
+  @UI: { lineItem: [{ position: 6, label: 'Estimated Cost' }],
+      identification: [{ position: 6, label: 'Estimated Cost' }] }
+  EstimatedCst;
+  @UI: { lineItem: [{ position: 7, label:'Actual Cost' }],
+      identification: [{ position: 7, label: 'Actual Cost' }] }
+  ActualCst;
+  @UI: { lineItem: [{ position: 8, label: 'Due Date' }],
+      identification: [{ position: 8, label: 'Due Date' }] }
+  DueDat;
+  @UI: { lineItem: [{ position: 9, label: 'Currency Code' }],
+      identification: [{ position: 9, label: 'Currency Code' }] }
+  Currencycode;
+  @UI: { lineItem: [{ position: 10, label: 'Status' }],
+      identification: [{ position: 10, label: 'Status' }] }
+  Status;
+  @UI.hidden: true
+  CreatedBy;
+  @UI.hidden: true
+  CreatedAt;
+  @UI.hidden: true
+  LastChangedBy;
+  @UI.hidden: true
+  LastChangedAt;
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+
+}

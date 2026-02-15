@@ -1,0 +1,64 @@
+managed implementation in class zbp_i_ealm_asset unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_EALM_Asset alias Asset
+persistent table zealm_asset
+draft table zdealm_asset
+lock master
+total etag LocalLastChangedAt
+authorization master ( instance )
+etag master LastChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( numbering : managed, readonly ) AssetUuid;
+  association _Maintenance { create; with draft;}
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft action Edit;
+  draft determine action Prepare;
+
+
+  mapping for zealm_asset corresponding
+    {
+      AssetUuid    = asset_uuid;
+      AssetName    = asset_name;
+      AssetType    = asset_type;
+      PlantId      = plant_id;
+      CostCenter   = cost_center;
+      PurchaseDate = purchase_date;
+      Status       = status;
+    }
+}
+
+define behavior for zi_ealm_Maintenance alias Maintenance
+persistent table zealm_maint
+draft table zdealm_maint
+lock dependent by _Asset
+authorization dependent by _Asset
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( numbering : managed, readonly ) RequestUuid;
+  field ( readonly ) AssetUuid;
+  association _Asset { with draft; }
+
+  mapping for zealm_maint corresponding
+    {
+      RequestUuid   = request_uuid;
+      AssetUuid     = asset_uuid;
+      Description   = description;
+      RequestedBy   = requested_by;
+      RequestedDate = requested_date;
+      EstimatedCst  = estimated_cst;
+      ActualCst     = actual_cst;
+      DueDat        = due_dat;
+      Currencycode  = currencycode;
+      Status        = status;
+    }
+}

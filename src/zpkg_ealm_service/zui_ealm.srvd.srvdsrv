@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Defination of EALM'
+define service ZUI_EALM {
+  expose ZC_EALM_ASSET;
+  expose ZC_EALM_MAINTENANCE;
+}
