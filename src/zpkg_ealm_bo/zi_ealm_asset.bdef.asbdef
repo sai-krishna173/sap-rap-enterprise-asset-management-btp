@@ -14,13 +14,15 @@ etag master LastChangedAt
   update;
   delete;
   field ( numbering : managed, readonly ) AssetUuid;
-  association _Maintenance { create; with draft;}
+  association _Maintenance { create;  with draft;}
 
   draft action Activate optimized;
   draft action Discard;
   draft action Resume;
   draft action Edit;
   draft determine action Prepare;
+
+
 
 
   mapping for zealm_asset corresponding
@@ -47,6 +49,12 @@ authorization dependent by _Asset
   field ( numbering : managed, readonly ) RequestUuid;
   field ( readonly ) AssetUuid;
   association _Asset { with draft; }
+
+validation validate_scrapped_asset on save { create; update; }
+
+determination set_initial_values on save { create; update; }
+
+determination derive_asset_status on save { create; update; delete; }
 
   mapping for zealm_maint corresponding
     {
