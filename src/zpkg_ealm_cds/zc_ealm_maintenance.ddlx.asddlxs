@@ -9,11 +9,11 @@
 annotate view ZC_EALM_MAINTENANCE with
 {
 
-@UI:{ facet: [{ id: 'Maintenance',
-                purpose: #STANDARD,
-                type: #IDENTIFICATION_REFERENCE,
-                label: 'Maintenance Details',
-                position: 1 }]}
+  @UI:{ facet: [{ id: 'Maintenance',
+                  purpose: #STANDARD,
+                  type: #IDENTIFICATION_REFERENCE,
+                  label: 'Maintenance Details',
+                  position: 1 }]}
   @UI: { lineItem: [{ position: 1, label: 'Request ID' }],
          identification: [{ position: 1, label: 'Request ID' }] }
   RequestUuid;
@@ -25,6 +25,9 @@ annotate view ZC_EALM_MAINTENANCE with
   Description;
   @UI: { lineItem: [{ position: 4, label: 'Requested by' }],
       identification: [{ position: 4, label: 'Requested by' }] }
+  @Consumption:{ valueHelpDefinition: [{ entity:{ name: 'ZI_EALM_EMPLOYEE' , element: 'EmpId' },
+                                    additionalBinding: [{ element: 'EmpName', localElement: 'RequestedBy' }]  }] }
+
   RequestedBy;
   @UI: { lineItem: [{ position: 5, label: 'Requested Date' }],
       identification: [{ position: 5, label: 'Requested Date' }] }

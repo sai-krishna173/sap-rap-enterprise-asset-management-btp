@@ -2,4 +2,5 @@
 define service ZUI_EALM {
   expose ZC_EALM_ASSET;
   expose ZC_EALM_MAINTENANCE;
+  expose ZI_EALM_EMPLOYEE;
 }
